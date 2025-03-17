@@ -1,0 +1,224 @@
+/* Color palette */
+:root {
+    --dark-teal: rgb(0, 25, 48);
+    --teal: rgb(0, 68, 105);
+    --light-teal: rgb(0, 120, 157);
+    --dark-yellow: rgb(237, 139, 16);
+    --yellow: rgb(249, 214, 159);
+    --light-yellow: rgb(255, 251, 249);
+}
+
+/* Global styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--light-yellow);
+    color: var(--dark-teal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+/* Header */
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    padding: 15px 30px;
+    background-color: var(--dark-teal);
+    color: var(--light-yellow);
+}
+
+#header a {
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--light-yellow);
+}
+
+#logo {
+    font-size: 30px;
+    color: var(--light-yellow);
+}
+
+/* Flow selection */
+#flows {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.flow_options {
+    padding: 12px 50px;
+    margin-top: 55px;
+    width: 25vw;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    background-color: var(--light-yellow);
+    color: var(--teal);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.flow_options:hover {
+    background-color: var(--light-teal);
+}
+
+.flow_options.active {
+    background-color: var(--light-yellow);
+    color: var(--dark-yellow);
+    font-weight: bolder;
+    font-size: 1.3rem;
+}
+
+
+/* Page structure */
+#page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+/* Input section */
+.input {
+    display: flex;
+    width: 80vw;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.input_sec1 {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.input_sec1 div {
+    display: flex;
+    flex-direction: row;
+    gap: 1%;
+    padding: 1%;
+}
+
+.input_sec2 {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: space-evenly;
+}
+
+/* Form elements */
+.dropdown,
+.input_box {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--light-teal);
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.buttons {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.buttons[type="submit"],
+.buttons[type="reset"] {
+    height: -webkit-fill-available;
+    margin: 1%;
+}
+
+.buttons[type="submit"] {
+    background-color: var(--dark-yellow);
+    color: white;
+}
+
+.buttons[type="submit"]:hover {
+    background-color: var(--yellow);
+}
+
+.buttons[type="reset"] {
+    background-color: var(--teal);
+    color: white;
+}
+
+.buttons[type="reset"]:hover {
+    background-color: var(--light-teal);
+}
+
+/* Output section */
+.output {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.output_sec1,
+.output_sec2 {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 48%;
+    height: max-content;
+
+}
+
+.output table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.output td {
+    padding: 10px;
+    border-bottom: 1px solid var(--light-teal);
+}
+
+/* Footer */
+#footer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background: var(--dark-teal);
+    color: white;
+    width: 100%;
+    margin-top: auto;
+}
+
+#footer a {
+    text-decoration: none;
+    font-size: 24px;
+    color: white;
+    transition: color 0.3s;
+}
+
+#footer a:hover {
+    color: var(--yellow);
+}

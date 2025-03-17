@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Compressible Flow Calculator</title>
+</head>
+<body>
+    <div id="header">
+        <a href="#">
+            <i id="logo" class="fa-regular fa-circle" style="color: whitesmoke;"></i>
+        </a>
+        <a href="#">Compressible Flow Calculator</a>
+    </div>
+
+    <div id="flows">
+        <button id="isen_btn" class="flow_options">Isentropic flow</button>
+        <button id="nor_btn" class="flow_options">Normal Shock</button>
+        <button id="obl_btn" class="flow_options">Oblique Shock</button>
+    </div>
+
+    <div id="page">
+        <div id="isentropic">
+            <form action="/" method="POST" class="input">
+                <input type="hidden" name="flow_type" value="isentropic">
+                <div class="input_sec1">
+                    <div>
+                        <select name="isen_var1" id="var1" class="bodytext dropdown">
+                            <option value="M">M</option>
+                            <option value="Mstar">M<sup>*</sup></option>
+                            <option value="P0_P">P₀/P</option>
+                            <option value="rho0_rho">ρ₀/ρ</option>
+                            <option value="T0_T">T₀/T</option>
+                        </select>
+                        <input name="isen_val1" class="bodytext input_box" type="number" step="0.01" placeholder="Enter input value" required>
+                    </div>
+                    <div>
+                        <select name="gamma" id="var2" class="bodytext dropdown">
+                            <option value="gamma">&gamma;</option>
+                        </select>
+                        <input name="gamma_val" class="bodytext input_box" type="text" step="0.01" placeholder="Enter ratio of specific heats" required>
+                    </div>
+                    <div>
+                        <select name="R" id="var3" class="bodytext dropdown">
+                            <option value="R">R</option>
+                        </select>
+                        <input name="R_val" class="bodytext input_box" type="number" step="0.01" placeholder="Enter gas constant" required>
+                    </div>
+                </div>
+                <div class="input_sec2">
+                    <button class="buttons" type="submit">Calculate</button>
+                    <button id="reset_btn" class="buttons" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="normal">
+            <form action="/" method="POST" class="input">
+                <input type="hidden" name="flow_type" value="normal">
+                <div class="input_sec1">
+                    <div>
+                        <select name="norm_var1" id="var1" class="bodytext dropdown">
+                            <option value="M1">M₁</option>
+                            <option value="M2">M₂</option>
+                            <option value="P2_P1">P₂/P₁</option>
+                            <option value="rho2_rho1">ρ₂/ρ₁</option>
+                            <option value="T2_T1">T₂/T₁</option>
+                        </select>
+                        <input name="norm_val1" class="bodytext input_box" type="number" step="0.01" placeholder="Enter input value" required>
+                    </div>
+                    <div>
+                        <select name="gamma" id="var2" class="bodytext dropdown">
+                            <option value="gamma">&gamma;</option>
+                        </select>
+                        <input name="gamma_val" class="bodytext input_box" type="number" step="0.01" placeholder="Enter ratio of specific heats" required>
+                    </div>
+                    <div>
+                        <select name="R" id="var3" class="bodytext dropdown">
+                            <option value="R">R</option>
+                        </select>
+                        <input name="R_val" class="bodytext input_box" type="number" step="0.01" placeholder="Enter gas constant" required>
+                    </div>
+                </div>
+                <div class="input_sec2">
+                    <button class="buttons" type="submit">Calculate</button>
+                    <button id="reset_btn" class="buttons" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="oblique">
+            <form action="/" method="POST" class="input">
+                <input type="hidden" name="flow_type" value="oblique">
+                <div class="input_sec1">
+                    <div>
+                        <select name="obl_var1" id="var1" class="bodytext dropdown">
+                            <option value="M1">M₁</option>
+                        </select>
+                        <input name="obl_val1" class="bodytext input_box" type="number" step="0.01" placeholder="Enter input value" required>
+                    </div>
+                    <div>
+                        <select name="obl_var2" id="var1" class="bodytext dropdown">
+                            <option value="theta">&theta;</option>
+                            <option value="beta">&beta;</option>
+                        </select>
+                        <input name="obl_val2" class="bodytext input_box" type="number" step="0.01" placeholder="Enter input value" required>
+                    </div>
+                    <div>
+                        <select name="gamma" id="var3" class="bodytext dropdown">
+                            <option value="gamma">&gamma;</option>
+                        </select>
+                        <input name="gamma_val" class="bodytext input_box" type="number" step="0.01" placeholder="Enter ratio of specific heats" required>
+                    </div>
+                    <div>
+                        <select name="R" id="var4" class="bodytext dropdown">
+                            <option value="R">R</option>
+                        </select>
+                        <input name="R_val" class="bodytext input_box" type="number" step="0.01" placeholder="Enter gas constant" required>
+                    </div>
+                </div>
+                <div class="input_sec2">
+                    <button class="buttons" type="submit">Calculate</button>
+                    <button id="reset_btn" class="buttons" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="output">
+            <div class="output_sec1">
+                {% if results %}
+                <table>
+                    <tbody>
+                        {% for key, value in results.items() %}
+                            <tr>
+                                <td class="bodytext">{{ key | safe }}</td>
+                                <td class="bodytext">{{ value | safe }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                    <p class="bodytext">No results to display</p>
+                {% endif %}
+            </div>
+            <div class="output_sec2">
+                {% if plot_url %}
+                    <img src="{{ plot_url }}" alt="Graph" class="graph-img">
+                {% else %}
+                    <p class="bodytext">Graph will appear here</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <a href="https://www.linkedin.com/in/anikasudha" target="_blank">
+            <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="" target="_blank">
+            <i class="fa-solid fa-envelope"></i>
+        </a>
+        <a href="" target="_blank">
+            <i class="fa-brands fa-github"></i>
+        </a>
+        
+        
+    </div>
+    
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
