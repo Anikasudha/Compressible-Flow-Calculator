@@ -9,4 +9,4 @@ Built using **Flask, NumPy, SciPy, Matplotlib, HTML, CSS, and JavaScript**, it c
 ## Features  
 - Compute aerodynamic parameters for different flow conditions  
 - User-friendly web interface with interactive input fields  
- Fast and accurate calculations powered by SciPy and NumPy  
+- Fast and accurate calculations powered by SciPy and NumPy  
